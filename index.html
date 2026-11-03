@@ -231,7 +231,7 @@ body.lock{overflow:hidden}
 <details><summary>Ketemu pemain nakal atau bug?</summary><p>Lapor lewat Discord atau hubungi staff.</p></details>
 </div></section>
 
-<footer><div class="wrap"><a class="brand" href="#top">Draco<b>PS</b></a>Growtopia Private Server. Tidak berafiliasi dengan Ubisoft atau Growtopia resmi. <span style="opacity:.5">v5</span></div></footer>
+<footer><div class="wrap"><a class="brand" href="#top">Draco<b>PS</b></a>Growtopia Private Server. Tidak berafiliasi dengan Ubisoft atau Growtopia resmi. <span style="opacity:.5">v6</span></div></footer>
 
 <script>
 document.getElementById('tabs').onclick=function(e){var t=e.target.dataset.t;if(!t)return;
@@ -274,7 +274,7 @@ function add(c,t){var d=document.createElement('div');d.className=c;d.textConten
 function send(){var i=$('ci'),t=i.value.trim();if(!t)return;
 if(!user){add('b','Masuk dulu ya buat ngobrol sama Draco AI.');setMode('in');show('mAuth');return}
 i.value='';add('u',t);var w=add('b','...');
-sb.functions.invoke('draco-ai',{body:{message:t,history:hist.slice(-6)}}).then(function(r){if(r.error){var c=r.error.context;if(c&&c.text){c.text().then(function(x){w.textContent='Error '+(c.status||'')+': '+x.slice(0,200)});return}w.textContent='Error: '+(r.error.message||'koneksi gagal');return}var a=(r.data&&r.data.reply)||'Draco AI lagi error, coba lagi nanti.';w.textContent=a;hist.push({role:'user',text:t},{role:'model',text:a})}).catch(function(){w.textContent='Draco AI lagi error, coba lagi nanti.'})}
+sb.functions.invoke('hyper-processor',{body:{message:t,history:hist.slice(-6)}}).then(function(r){if(r.error){var c=r.error.context;if(c&&c.text){c.text().then(function(x){w.textContent='Error '+(c.status||'')+': '+x.slice(0,200)});return}w.textContent='Error: '+(r.error.message||'koneksi gagal');return}var a=(r.data&&r.data.reply)||'Draco AI lagi error, coba lagi nanti.';w.textContent=a;hist.push({role:'user',text:t},{role:'model',text:a})}).catch(function(){w.textContent='Draco AI lagi error, coba lagi nanti.'})}
 $('cs').onclick=send;$('ci').onkeydown=function(e){if(e.key=='Enter')send()};
 var isAdmin=false;
 function tui(){$('tlog').style.display=user?'none':'block';$('tfm').style.display=user?'block':'none'}
