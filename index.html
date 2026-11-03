@@ -149,6 +149,8 @@ body.lock{overflow:hidden}
 .ti .h{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px}.ti b{color:#fff}.ti small{color:var(--mute);font-size:12px;margin-left:8px}
 .ti p{margin:0;color:var(--ink);white-space:pre-wrap;word-break:break-word;font-size:15px}.ti button{background:none;border:0;color:#ff8a8a;font:700 12px Outfit,sans-serif;cursor:pointer}
 .tem{color:var(--mute);text-align:center;padding:20px}
+.typ span{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--ice);animation:bn 1.2s infinite ease-in-out}.typ span:nth-child(2){animation-delay:.15s}.typ span:nth-child(3){animation-delay:.3s}
+@keyframes bn{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
 </style>
 </head>
 <body class="lock">
@@ -231,7 +233,7 @@ body.lock{overflow:hidden}
 <details><summary>Ketemu pemain nakal atau bug?</summary><p>Lapor lewat Discord atau hubungi staff.</p></details>
 </div></section>
 
-<footer><div class="wrap"><a class="brand" href="#top">Draco<b>PS</b></a>Growtopia Private Server. Tidak berafiliasi dengan Ubisoft atau Growtopia resmi. <span style="opacity:.5">v6</span></div></footer>
+<footer><div class="wrap"><a class="brand" href="#top">Draco<b>PS</b></a>Growtopia Private Server. Tidak berafiliasi dengan Ubisoft atau Growtopia resmi. <span style="opacity:.5">v7</span></div></footer>
 
 <script>
 document.getElementById('tabs').onclick=function(e){var t=e.target.dataset.t;if(!t)return;
@@ -273,7 +275,7 @@ $('chb').onclick=function(){$('chp').classList.toggle('show')};
 function add(c,t){var d=document.createElement('div');d.className=c;d.textContent=t;$('cm').appendChild(d);$('cm').scrollTop=1e9;return d}
 function send(){var i=$('ci'),t=i.value.trim();if(!t)return;
 if(!user){add('b','Masuk dulu ya buat ngobrol sama Draco AI.');setMode('in');show('mAuth');return}
-i.value='';add('u',t);var w=add('b','...');
+i.value='';add('u',t);var w=add('b','');w.classList.add('typ');w.innerHTML='<span></span><span></span><span></span>';
 sb.functions.invoke('hyper-processor',{body:{message:t,history:hist.slice(-6)}}).then(function(r){if(r.error){var c=r.error.context;if(c&&c.text){c.text().then(function(x){w.textContent='Error '+(c.status||'')+': '+x.slice(0,200)});return}w.textContent='Error: '+(r.error.message||'koneksi gagal');return}var a=(r.data&&r.data.reply)||'Draco AI lagi error, coba lagi nanti.';w.textContent=a;hist.push({role:'user',text:t},{role:'model',text:a})}).catch(function(){w.textContent='Draco AI lagi error, coba lagi nanti.'})}
 $('cs').onclick=send;$('ci').onkeydown=function(e){if(e.key=='Enter')send()};
 var isAdmin=false;
